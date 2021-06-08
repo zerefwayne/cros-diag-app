@@ -7,6 +7,7 @@
 import { Component } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
 import './lit-components/hello-world/hello-world.element';
+import './lit-components/input-box/input-box.element';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,8 @@ import './lit-components/hello-world/hello-world.element';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  name: string = 'default';
+
   constructor(private updates: SwUpdate) {
     updates.available.subscribe((event) => {
       updates.activateUpdate().then(() => {
@@ -21,5 +24,9 @@ export class AppComponent {
         console.log('Updated app to latest version!');
       });
     });
+  }
+
+  handleInputChange(e: any) {
+    this.name = e.detail.value;
   }
 }

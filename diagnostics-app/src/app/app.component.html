@@ -6,3 +6,8 @@
 
 <h1>Sample Diagnostics App</h1>
 <hello-world></hello-world>
+<br />
+<input-box [name]="name" (changed)="handleInputChange($event)"></input-box>
+<hr />
+<h3>Hello {{ name }}! I'm being rendered from Angular!</h3>
+<button (click)="name = 'Changed'">Change value!</button>
