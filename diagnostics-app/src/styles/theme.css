@@ -1,0 +1,17 @@
+/**
+ * Copyright 2021 The Chromium Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+:root {
+  --theme-primary: #324fff;
+  --theme-secondary: #283198;
+  --theme-accent: #55ffff;
+  --theme-black: #000000;
+  --theme-light: #fafafa;
+
+  --spacing-m: 20px;
+
+  --size-l: 2rem;
+}
