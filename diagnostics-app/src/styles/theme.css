@@ -42,6 +42,8 @@
 
   --color-white: #fff;
 
+  --color-blue: rgb(76, 139, 245);
+
   --app-header-background: var(--color-light-grey);
   --app-header-border-bottom-color: var(--color-dark-grey);
   --app-header-color: var(--color-white);
