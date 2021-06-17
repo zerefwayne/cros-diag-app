@@ -8,10 +8,10 @@ import { customElement, property } from 'lit/decorators.js';
 @customElement('sample-el')
 export class SampleElement extends LitElement {
   @property({ type: Number })
-  percentage_remaining: number = 100;
+  percentage: number = 0;
 
   @property({ type: Number })
-  time_remaining: number = 223;
+  time: number = 0;
 
   private generate_time_string = (time: number) => {
     const hours = Math.floor(time / 60);
@@ -59,10 +59,8 @@ export class SampleElement extends LitElement {
     return html`
       <div class="element-container">
         <header>Battery</header>
-        <div class="percentage">${this.percentage_remaining}%</div>
-        <div class="time">
-          ${this.generate_time_string(this.time_remaining)}
-        </div>
+        <div class="percentage">${this.percentage}%</div>
+        <div class="time">${this.generate_time_string(this.time)}</div>
       </div>
     `;
   }
