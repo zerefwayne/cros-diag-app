@@ -18,7 +18,16 @@ import '../../webcomponents/sample/sample-el.lit';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+  per: number = 50;
+  time: number = 100;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let interval = setInterval(() => {
+      this.per -= 1;
+      if (this.per == 0) {
+        clearInterval(interval);
+      }
+    }, 100);
+  }
 }
