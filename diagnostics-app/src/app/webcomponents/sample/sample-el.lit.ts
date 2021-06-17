@@ -8,7 +8,7 @@ import { customElement, property } from 'lit/decorators.js';
 @customElement('sample-el')
 export class SampleElement extends LitElement {
   @property({ type: Number })
-  percentage_remaining: number = 90;
+  percentage_remaining: number = 100;
 
   @property({ type: Number })
   time_remaining: number = 223;
@@ -30,6 +30,7 @@ export class SampleElement extends LitElement {
     .element-container {
       min-height: 100px;
       padding: 1.3rem 1.6rem;
+      background-color: #232323;
     }
     header {
       font-size: 20px;
@@ -38,12 +39,19 @@ export class SampleElement extends LitElement {
     }
     .percentage {
       margin-bottom: 1rem;
-      font-size: 32px;
+      font-size: 16px;
       font-weight: 500;
+      text-align: center;
+      width: 100%;
+      padding: 5px;
+      background-color: #21a464;
+      border-radius: 4px;
     }
     .time {
       font-size: 16px;
       font-weight: 500;
+      text-align: right;
+      padding-right: 3px;
     }
   `;
   render() {
