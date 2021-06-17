@@ -7,7 +7,54 @@ import { customElement, property } from 'lit/decorators.js';
 
 @customElement('sample-el')
 export class SampleElement extends LitElement {
+  @property({ type: Number })
+  percentage_remaining: number = 90;
+
+  @property({ type: Number })
+  time_remaining: number = 223;
+
+  private generate_time_string = (time: number) => {
+    const hours = Math.floor(time / 60);
+    const minutes = Math.floor(time % 60);
+    if (hours === 0) {
+      return `${minutes} minutes remaining`;
+    }
+    return `${hours} hours, ${minutes} minutes remaining`;
+  };
+
+  static styles = css`
+    * {
+      box-sizing: border-box;
+      color: white;
+    }
+    .element-container {
+      min-height: 100px;
+      padding: 1.3rem 1.6rem;
+    }
+    header {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+    .percentage {
+      margin-bottom: 1rem;
+      font-size: 32px;
+      font-weight: 500;
+    }
+    .time {
+      font-size: 16px;
+      font-weight: 500;
+    }
+  `;
   render() {
-    return html`<p>Hello, Aayush!</p>`;
+    return html`
+      <div class="element-container">
+        <header>Battery</header>
+        <div class="percentage">${this.percentage_remaining}%</div>
+        <div class="time">
+          ${this.generate_time_string(this.time_remaining)}
+        </div>
+      </div>
+    `;
   }
 }
