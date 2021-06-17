@@ -31,6 +31,7 @@ export class SampleElement extends LitElement {
       min-height: 100px;
       padding: 1.3rem 1.6rem;
       background-color: #232323;
+      border-radius: 3px;
     }
     header {
       font-size: 20px;
