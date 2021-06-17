@@ -30,7 +30,10 @@
 
 .card-container {
   background-color: #222;
+  padding: 3rem;
   border-radius: 3px;
+  display: flex;
+  justify-content: center;
   font-size: 24px;
   color: #777;
 }

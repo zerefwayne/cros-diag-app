@@ -10,6 +10,8 @@
 
 import { Component, OnInit } from '@angular/core';
 
+import '../../webcomponents/sample/sample-el.lit';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
