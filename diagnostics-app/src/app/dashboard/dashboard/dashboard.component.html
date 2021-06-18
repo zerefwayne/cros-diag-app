@@ -24,7 +24,9 @@
     <div>
       <sample-el [percentage]="per" [time]="time"></sample-el>
     </div>
-    <div class="card-container">RAM</div>
+    <div>
+      <bar-chart [data]="data"></bar-chart>
+    </div>
   </div>
   <div class="col-container" fxFlex fxLayout="column" fxLayoutGap="16px">
     <div class="card-container">CPU</div>
