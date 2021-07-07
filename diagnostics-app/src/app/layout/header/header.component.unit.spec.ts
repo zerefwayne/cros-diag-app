@@ -9,7 +9,9 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+
 import { Theme } from 'src/app/core/enums/global.enums';
+
 import { HeaderComponent } from './header.component';
 
 describe('unit: component: header', () => {
@@ -28,7 +30,6 @@ describe('unit: component: header', () => {
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    button = fixture.debugElement.query(By.css('button')).nativeElement;
   });
 
   it('should create', () => {
@@ -37,22 +38,45 @@ describe('unit: component: header', () => {
   });
 
   it('isDarkModeActivated() returns correct dark mode status', () => {
+    let button: HTMLButtonElement = fixture.debugElement.query(
+      By.css('#btnToggleTheme')
+    ).nativeElement;
     expect(component.isDarkModeActivated()).toBeTrue();
     button.click();
+    fixture.detectChanges();
     expect(component.isDarkModeActivated()).toBeFalse();
   });
 
   it('calls onToggleTheme on button click', () => {
     spyOn(component, 'onToggleTheme');
+    let button: HTMLButtonElement = fixture.debugElement.query(
+      By.css('#btnToggleTheme')
+    ).nativeElement;
     button.click();
     fixture.detectChanges();
     expect(component.onToggleTheme).toHaveBeenCalled();
   });
 
+  it('should emit event on btnToggleDrawer click', () => {
+    spyOn(component.toggleDrawer, 'emit');
+    spyOn(component, 'onToggleDrawer').and.callThrough();
+
+    let button: HTMLButtonElement = fixture.debugElement.query(
+      By.css('#btnToggleDrawer')
+    ).nativeElement;
+
+    button.click();
+    expect(component.onToggleDrawer).toHaveBeenCalled();
+    expect(component.toggleDrawer.emit).toHaveBeenCalled();
+  });
+
   it('renders correct theme icon', () => {
     // default theme is dark, should display light_mode icon
     let iconEl: HTMLElement = fixture.debugElement.query(
-      By.css('mat-icon')
+      By.css('#iconTheme')
+    ).nativeElement;
+    let button: HTMLButtonElement = fixture.debugElement.query(
+      By.css('#btnToggleTheme')
     ).nativeElement;
     // It renders on DOM as <mat-icon>light_mode</mat-icon>
     expect(iconEl.textContent).toBe('light_mode');
@@ -60,7 +84,7 @@ describe('unit: component: header', () => {
     button.click();
     fixture.detectChanges();
     // update the handle
-    iconEl = fixture.debugElement.query(By.css('mat-icon')).nativeElement;
+    iconEl = fixture.debugElement.query(By.css('#iconTheme')).nativeElement;
     expect(iconEl.textContent).toBe('dark_mode');
   });
 });

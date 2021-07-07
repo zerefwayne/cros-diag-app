@@ -9,6 +9,7 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+
 import { Theme } from 'src/app/core/enums/global.enums';
 import { ThemeService } from 'src/app/core/services/theme.service';
 
@@ -18,7 +19,6 @@ describe('integration: component: header', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
   let service: ThemeService;
-  let button: HTMLButtonElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -33,16 +33,12 @@ describe('integration: component: header', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
     service = TestBed.inject(ThemeService);
-    button = fixture.debugElement.query(By.css('button')).nativeElement;
-  });
-
-  it('service should emit event on click', () => {
-    spyOn(service, 'toggleTheme');
-    button.click();
-    expect(service.toggleTheme).toHaveBeenCalled();
   });
 
   it('should receive theme update from service on click', () => {
+    let button: HTMLButtonElement = fixture.debugElement.query(
+      By.css('#btnToggleTheme')
+    ).nativeElement;
     // subscribe to changes from themeService
     // expect statements will run on receiving toggleUpdates
     let subscription = service.subscribeOnThemeChange((next: Theme) => {

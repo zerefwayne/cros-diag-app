@@ -7,10 +7,11 @@
  * Imported by app.module.ts
  */
 
-import { Component, OnDestroy } from '@angular/core';
-import { Theme } from 'src/app/core/enums/global.enums';
-import { ThemeService } from 'src/app/core/services/theme.service';
+import { Component, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs';
+
+import { ThemeService } from 'src/app/core/services/theme.service';
+import { Theme } from 'src/app/core/enums/global.enums';
 
 @Component({
   selector: 'app-header',
@@ -20,6 +21,8 @@ import { Subscription } from 'rxjs';
 export class HeaderComponent implements OnDestroy {
   private _theme: Theme;
   private _themeSubscription!: Subscription;
+
+  @Output() toggleDrawer = new EventEmitter<void>();
 
   get theme() {
     return this._theme;
@@ -40,6 +43,10 @@ export class HeaderComponent implements OnDestroy {
 
   onToggleTheme() {
     this._themeService.toggleTheme();
+  }
+
+  onToggleDrawer() {
+    this.toggleDrawer.emit();
   }
 
   isDarkModeActivated() {

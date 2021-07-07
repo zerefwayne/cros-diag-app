@@ -6,8 +6,9 @@
  * @fileoverview Global service for managing theme related operations for the app.
  */
 
-import { Subject, Subscription } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
+
 import { Theme } from '../enums/global.enums';
 
 @Injectable({
