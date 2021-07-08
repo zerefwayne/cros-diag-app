@@ -40,6 +40,8 @@
   --color-dark-white: #e3e3e3;
   --color-blue: #4c8bf5;
 
+  --color-white: #fff;
+
   --app-header-background: var(--color-light-grey);
   --app-header-border-bottom-color: var(--color-dark-grey);
   --app-header-color: var(--color-white);
